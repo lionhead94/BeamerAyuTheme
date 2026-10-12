@@ -1,0 +1,141 @@
+%% Compile with: xelatex main.tex  or  lualatex main.tex
+%% Required fonts: Roboto Slab, Fira Sans (available on Google Fonts)
+\documentclass[aspectratio=169, 12pt]{beamer}
+
+% set your preferred theme
+\usetheme{AyuMirage}
+% \usetheme{AyuLight}
+% \usetheme{AyuDark}
+
+% set the color accent
+% \colorlet{ayuAccentColor}{ayuBlue}
+
+\addbibresource{bibliography.bib}
+
+\title{Presentation Title}
+\subtitle{An optional subtitle}
+\author[M. Smith]{Mario Smith}
+\institute{University · Department of Computer Science}
+\date{\today}
+
+\begin{document}
+
+%% Title slide (plain = no header/footer)
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%% Table of contents
+\begin{frame}{Table of Contents}
+	\tableofcontents
+\end{frame}
+
+%% ── Section 1 ─────────────────────────────────────────────────────────────────
+\section{Introduction}
+\subsection{Motivation}
+\subsection{Background}
+
+\begin{frame}{A simple frame}
+	This is a frame with body text in \textbf{Fira Sans} and the title in
+	\textit{Roboto Slab}.
+
+	\begin{itemize}
+		\item First top-level item
+		\item Second top-level item
+		      \begin{itemize}
+			      \item Level-2 sub-item
+			      \item Another sub-item
+			            \begin{itemize}
+				            \item Level 3
+			            \end{itemize}
+		      \end{itemize}
+		\item Third top-level item
+	\end{itemize}
+
+	\medskip
+	This text needs a citation\footcite{knuth1984literate}.
+\end{frame}
+
+\begin{frame}{Frame with subtitle}{Frame subtitle}
+	Body text. The subtitle is displayed after the \texttt{|} separator
+	in the header bar.
+
+	\begin{enumerate}
+		\item First item
+		\item Second item
+		\item Third item
+	\end{enumerate}
+\end{frame}
+
+%% ── Section 2 ─────────────────────────────────────────────────────────────────
+\section{Blocks and Alerts}
+\subsection{Block Types}
+
+\begin{frame}{Block types}
+	\begin{block}{Standard block}
+		Used for definitions, theorems, or general content.
+	\end{block}
+
+	\medskip
+
+	\begin{alertblock}{Alert block}
+		Used for warnings, errors, or critical points to highlight.
+	\end{alertblock}
+
+	\medskip
+
+	\begin{exampleblock}{Example block}
+		Used for practical examples, code snippets, or concrete cases.
+	\end{exampleblock}
+\end{frame}
+
+%% ── Section 3 ─────────────────────────────────────────────────────────────────
+\section{Layout}
+\subsection{Columns}
+\subsection{Colors}
+
+\begin{frame}{Two columns}
+	\begin{columns}[t]
+		\column{0.48\textwidth}
+		\textbf{Left column}
+
+		\begin{itemize}
+			\item Item A
+			\item Item B
+			\item Item C
+		\end{itemize}
+
+		\column{0.48\textwidth}
+		\textbf{Right column}
+
+		\begin{enumerate}
+			\item First
+			\item Second
+			\item Third
+		\end{enumerate}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ayu color palette}
+	All palette colors are available as named colors:
+
+	\medskip
+	\textcolor{ayuAccent}{Accent} \quad
+	\textcolor{ayuYellow}{Yellow} \quad
+	\textcolor{ayuOrange}{Orange} \quad
+	\textcolor{ayuRed}{Red} \quad
+	\textcolor{ayuPink}{Pink} \quad
+	\textcolor{ayuPeach}{Peach}
+
+	\smallskip
+	\textcolor{ayuGreen}{Green} \quad
+	\textcolor{ayuTeal}{Teal} \quad
+	\textcolor{ayuCyan}{Cyan} \quad
+	\textcolor{ayuBlue}{Blue} \quad
+	\textcolor{ayuPurple}{Purple}
+
+	\medskip
+	Use \alert{highlighted text} via \texttt{\textbackslash alert\{\}}.
+\end{frame}
+
+\end{document}

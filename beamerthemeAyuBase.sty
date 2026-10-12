@@ -1,0 +1,172 @@
+%%
+%% Ayu Beamer Theme — shared layout
+%% Loaded by beamerthemeAyuLight/Mirage/Dark.sty, which define the ayu* colors.
+%% Requires XeLaTeX or LuaLaTeX (for fontspec)
+%% Required fonts: Roboto Slab, Fira Sans
+%%
+
+\RequirePackage{fontspec}
+\RequirePackage{tikz}
+\RequirePackage[style=verbose]{biblatex}
+
+%% Smaller font for citations
+\renewcommand{\footnotesize}{\scriptsize}
+
+%% ── Accent color (customizable) ───────────────────────────────────────────────
+%% To change the accent color in your document:
+%%   \colorlet{ayuAccentColor}{ayuBlue}   % after \usetheme{Ayu...}
+\colorlet{ayuAccentColor}{ayuAccent}
+
+%% ── Fonts ─────────────────────────────────────────────────────────────────────
+%% Roboto Slab → \rmfamily → titles and headings
+%% Fira Sans   → \sffamily → body text (Beamer default)
+\setmainfont{Roboto Slab}[
+  BoldFont  = {Roboto Slab Bold},
+  Scale     = MatchLowercase,
+]
+\setsansfont{Fira Sans}[
+  Scale          = MatchLowercase,
+  BoldFont       = {Fira Sans Bold},
+  ItalicFont     = {Fira Sans Italic},
+]
+
+%% ── Beamer Colors ─────────────────────────────────────────────────────────────
+\setbeamercolor{normal text}         {fg=ayuFg,           bg=ayuBg}
+\setbeamercolor{alerted text}        {fg=ayuAccentColor}
+\setbeamercolor{example text}        {fg=ayuGreen}
+\setbeamercolor{structure}           {fg=ayuAccentColor}
+\setbeamercolor{background canvas}   {bg=ayuBg}
+
+\setbeamercolor{title}               {fg=ayuAccentColor,  bg=ayuBg}
+\setbeamercolor{subtitle}            {fg=ayuFg2,          bg=ayuBg}
+\setbeamercolor{author}              {fg=ayuFg,           bg=ayuBg}
+\setbeamercolor{institute}           {fg=ayuFg3,          bg=ayuBg}
+\setbeamercolor{date}                {fg=ayuFg3,          bg=ayuBg}
+
+\setbeamercolor{frametitle}          {fg=ayuAccentColor,  bg=ayuBg1}
+\setbeamercolor{framesubtitle}       {fg=ayuFg2,          bg=ayuBg1}
+\setbeamercolor{frametitle rule}     {bg=ayuAccentColor}
+
+\setbeamercolor{block title}         {fg=ayuBg,           bg=ayuAccentColor}
+\setbeamercolor{block body}          {fg=ayuFg,           bg=ayuBg1}
+\setbeamercolor{block title alerted} {fg=ayuBg,           bg=ayuRed}
+\setbeamercolor{block body alerted}  {fg=ayuFg,           bg=ayuBg1}
+\setbeamercolor{block title example} {fg=ayuBg,           bg=ayuGreen}
+\setbeamercolor{block body example}  {fg=ayuFg,           bg=ayuBg1}
+
+\setbeamercolor{itemize item}        {fg=ayuAccentColor}
+\setbeamercolor{itemize subitem}     {fg=ayuCyan}
+\setbeamercolor{itemize subsubitem}  {fg=ayuPurple}
+\setbeamercolor{enumerate item}      {fg=ayuAccentColor}
+\setbeamercolor{enumerate subitem}   {fg=ayuCyan}
+\setbeamercolor{enumerate subsubitem}{fg=ayuPurple}
+\setbeamercolor{description item}    {fg=ayuAccentColor}
+
+\setbeamercolor{footline}            {fg=ayuBg4,          bg=ayuBg}
+\setbeamercolor{section in toc}      {fg=ayuFg}
+\setbeamercolor{subsection in toc}   {fg=ayuFg2}
+\setbeamercolor{caption name}        {fg=ayuAccentColor}
+
+%% ── Beamer Fonts ──────────────────────────────────────────────────────────────
+%% family=\rmfamily → Roboto Slab; default (\sffamily) → Fira Sans
+\setbeamerfont{title}         {family=\rmfamily, size=\LARGE,     series=\bfseries}
+\setbeamerfont{subtitle}      {family=\rmfamily, size=\large,     series=\mdseries}
+\setbeamerfont{author}        {                  size=\normalsize, series=\mdseries}
+\setbeamerfont{institute}     {                  size=\small,      series=\mdseries}
+\setbeamerfont{date}          {                  size=\small,      series=\mdseries}
+\setbeamerfont{frametitle}    {family=\rmfamily, size=\large,     series=\bfseries}
+\setbeamerfont{framesubtitle} {family=\rmfamily, size=\small,     series=\mdseries}
+\setbeamerfont{block title}   {                  size=\normalsize, series=\bfseries}
+\setbeamerfont{footline}      {                  size=\tiny}
+\setbeamerfont{section in toc}   {                  size=\normalsize}
+\setbeamerfont{subsection in toc}{                  size=\small}
+
+%% ── Templates ─────────────────────────────────────────────────────────────────
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{itemize item}     {\raisebox{0.15ex}{\small\textbullet}}
+\setbeamertemplate{itemize subitem}  {\raisebox{0.15ex}{\small\textendash}}
+\setbeamertemplate{itemize subsubitem}{\raisebox{0.15ex}{\scriptsize\textperiodcentered}}
+
+\setbeamertemplate{section in toc}{%
+  {\color{ayuAccentColor}\raisebox{0.15ex}{\small\textbullet}}\hspace{0.5em}%
+  \usebeamercolor[fg]{section in toc}\inserttocsection\par%
+}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.5em}{\color{ayuCyan}\raisebox{0.15ex}{\small\textendash}}\hspace{0.5em}%
+  \usebeamercolor[fg]{subsection in toc}%
+  \usebeamerfont{subsection in toc}\inserttocsubsection\par%
+}
+
+%% ── Title Page ────────────────────────────────────────────────────────────────
+\defbeamertemplate*{title page}{ayu}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    %% accent bar at the top
+    \fill[ayuAccentColor]
+      (current page.north west) rectangle ([yshift=-3pt] current page.north east);
+  \end{tikzpicture}%
+  \vfill
+  %% title and subtitle
+  \begin{beamercolorbox}[wd=\textwidth, sep=0pt]{title}
+    \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+    \ifx\insertsubtitle\@empty\else
+      \vskip0.45em
+      \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+    \fi
+  \end{beamercolorbox}%
+  \vskip0.9em
+  %% thin separator
+  {\color{ayuBg3}\rule{0.42\textwidth}{0.4pt}}\par
+  \vskip0.9em
+  %% author, institute, date
+  \begin{beamercolorbox}[wd=\textwidth, sep=0pt]{author}
+    \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
+    \ifx\insertinstitute\@empty\else
+      \vskip0.25em
+      \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+    \fi
+    \ifx\insertdate\@empty\else
+      \vskip0.25em
+      \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+    \fi
+  \end{beamercolorbox}%
+  \vfill
+}
+
+%% ── Frame Title ───────────────────────────────────────────────────────────────
+\defbeamertemplate*{frametitle}{ayu}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[%
+      wd=\paperwidth, ht=2.6ex, dp=1.2ex,
+      leftskip=0.7cm, rightskip=0.7cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle%
+    \ifx\insertframesubtitle\@empty\else
+      \hspace{0.55em}{\color{ayuBg4}|}\hspace{0.4em}%
+      \usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}%
+      \insertframesubtitle%
+    \fi
+  \end{beamercolorbox}%
+  \nointerlineskip
+  %% full-width accent rule (a colorbox, so beamer aligns it like the bar above)
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1pt, dp=0pt]{frametitle rule}\end{beamercolorbox}%
+}
+
+%% ── Footline ──────────────────────────────────────────────────────────────────
+\defbeamertemplate*{footline}{ayu}{%
+  \usebeamerfont{footline}%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=2.4ex, dp=1ex]{footline}%
+    \begin{beamercolorbox}[wd=0.22\paperwidth, ht=2.4ex, dp=1ex, leftskip=0.35cm]{footline}%
+      \insertshortauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.56\paperwidth, ht=2.4ex, dp=1ex, center]{footline}%
+      \insertshorttitle%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.22\paperwidth, ht=2.4ex, dp=1ex, right, rightskip=0.35cm]{footline}%
+      \insertframenumber\,/\,\inserttotalframenumber%
+    \end{beamercolorbox}%
+  \end{beamercolorbox}%
+}
+
+%% empty headline
+\defbeamertemplate*{headline}{ayu}{}

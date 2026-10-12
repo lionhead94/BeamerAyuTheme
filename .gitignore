@@ -1,0 +1,30 @@
+# Compilation files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.fmt
+*.glo
+*.gls
+*.ist
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.nav
+*.snm
+*.bcf
+*.synctex.gz
+*.synctex(busy)
+*.run.xml
+_minted-*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
